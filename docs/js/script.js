@@ -16,7 +16,7 @@ function crearGaleria() {
 
     for( let i = 1; i <= 28; i++ ) {
         const imagen = document.createElement('IMG');
-        imagen.src = `/img/logos/${i}.jpg`;
+        imagen.src = `../img/logos/${i}.jpg`;
         imagen.dataset.imagenId = i; 
 
        const lista = document.createElement('LI');
@@ -31,7 +31,7 @@ function crearGaleria2() {
 
         for( let i = 1; i <= 8; i++ ) {
         const imagen = document.createElement('IMG');
-        imagen.src = `/img/etiquetas/${i}.jpg`;
+        imagen.src = `../img/etiquetas/${i}.jpg`;
         imagen.dataset.imagenId = i; 
 
       const galeria = document.querySelector('.galeria-imagenes-2');
@@ -46,7 +46,7 @@ function crearGaleria3() {
 
         for( let i = 1; i <= 9; i++ ) {
         const imagen = document.createElement('IMG');
-        imagen.src = `/img/publicidad/${i}.jpg`;
+        imagen.src = `../img/publicidad/${i}.jpg`;
         imagen.dataset.imagenId = i; 
 
       const galeria = document.querySelector('.galeria-imagenes-3');
@@ -61,7 +61,7 @@ function crearGaleria4() {
 
         for( let i = 1; i <= 5; i++ ) {
         const imagen = document.createElement('IMG');
-        imagen.src = `/img/ilustraciones/${i}.jpg`;
+        imagen.src = `../img/ilustraciones/${i}.jpg`;
         imagen.dataset.imagenId = i; 
 
       const galeria = document.querySelector('.galeria-imagenes-4');
@@ -76,7 +76,7 @@ function crearGaleria5() {
 
         for( let i = 1; i <= 8; i++ ) {
         const imagen = document.createElement('IMG');
-        imagen.src = `/img/pag/${i}.jpg`;
+        imagen.src = `../img/pag/${i}.jpg`;
         imagen.dataset.imagenId = i; 
 
       const galeria = document.querySelector('.galeria-imagenes-5');
