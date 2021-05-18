@@ -8,16 +8,18 @@ document.addEventListener('DOMContentLoaded', function() {
     crearGaleria5();
    mostrarSeccion();
    cambiarSeccion();
-  navegacionFija()
+  navegacionFija();
 });
 
 function crearGaleria() {
     const galeria = document.querySelector('.galeria-imagenes');
 
-    for( let i = 1; i <= 28; i++ ) {
+    for( let i = 1; i <= 32; i++ ) {
         const imagen = document.createElement('IMG');
         imagen.src = `../img/logos/${i}.jpg`;
         imagen.dataset.imagenId = i; 
+
+        imagen.onclick = mostrarImagen;
 
        const lista = document.createElement('LI');
        lista.appendChild(imagen);
@@ -26,13 +28,50 @@ function crearGaleria() {
     }
 }
 
+
+function mostrarImagen(e) {
+    const id = parseInt( e.target.dataset.imagenId );
+
+    // Generar la imagen
+    const imagen = document.createElement('IMG');
+    imagen.src = `../img/logos2/${id}.jpg`;
+
+    const overlay = document.createElement('DIV');
+    overlay.appendChild(imagen);
+    overlay.classList.add('overlay');
+
+    // Cuando se da click, cerrar la imagen
+    overlay.onclick = function() {
+        overlay.remove();
+        body.classList.remove('fijar-body');
+    }
+
+    // Boton para cerrar la imagen
+    const cerrarImagen = document.createElement('P');
+    cerrarImagen.textContent = 'X';
+    cerrarImagen.classList.add('btn-cerrar');
+
+    // Cuando se presiona, se cierra la imagen
+    cerrarImagen.onclick = function() {
+        overlay.remove();
+        body.classList.remove('fijar-body');
+    }
+
+    overlay.appendChild(cerrarImagen)
+
+    // Mostrar en el HTML
+    const body = document.querySelector('body');
+    body.appendChild(overlay);
+    body.classList.add('fijar-body');
+}
+
   
 function crearGaleria2() {
 
         for( let i = 1; i <= 8; i++ ) {
         const imagen = document.createElement('IMG');
         imagen.src = `../img/etiquetas/${i}.jpg`;
-        imagen.dataset.imagenId = i; 
+      
 
       const galeria = document.querySelector('.galeria-imagenes-2');
       const lista = document.createElement('li');
@@ -47,7 +86,7 @@ function crearGaleria3() {
         for( let i = 1; i <= 9; i++ ) {
         const imagen = document.createElement('IMG');
         imagen.src = `../img/publicidad/${i}.jpg`;
-        imagen.dataset.imagenId = i; 
+       
 
       const galeria = document.querySelector('.galeria-imagenes-3');
       const lista = document.createElement('li');
@@ -59,10 +98,10 @@ function crearGaleria3() {
 
 function crearGaleria4() {
 
-        for( let i = 1; i <= 5; i++ ) {
+        for( let i = 1; i <= 7; i++ ) {
         const imagen = document.createElement('IMG');
         imagen.src = `../img/ilustraciones/${i}.jpg`;
-        imagen.dataset.imagenId = i; 
+       
 
       const galeria = document.querySelector('.galeria-imagenes-4');
       const lista = document.createElement('li');
@@ -77,7 +116,7 @@ function crearGaleria5() {
         for( let i = 1; i <= 8; i++ ) {
         const imagen = document.createElement('IMG');
         imagen.src = `../img/pag/${i}.jpg`;
-        imagen.dataset.imagenId = i; 
+      
 
       const galeria = document.querySelector('.galeria-imagenes-5');
       const lista = document.createElement('li');
@@ -99,13 +138,11 @@ function mostrarSeccion() {
     const seccionActual = document.querySelector(`#paso-${pagina}`);
       seccionActual.classList.add('mostrar-seccion');
 
-    // Eliminar la clase de actual en el tab anterior
     const tabAnterior = document.querySelector('.enlaces .actual');
     if(tabAnterior) {
         tabAnterior.classList.remove('actual');
     }
-  
-    // Resalta el Tab Actual
+ 
     const tab = document.querySelector(`[data-paso="${pagina}"]`);
     tab.classList.add('actual');
 
@@ -135,10 +172,11 @@ function navegacionFija() {
         entries[0].isIntersecting
             ? barra.classList.remove('fijo')
         
-            : barra.classList.add('fijo')
+            : barra.classList.add('fijo') 
        
     });
     // Elemento a observar
     observer.observe(document.querySelector('.encabezado'));
     
 }
+
